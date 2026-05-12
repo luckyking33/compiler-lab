@@ -1,0 +1,8 @@
+int main() {
+  int x;
+  x = input();
+  if (x >= 10) {
+    print(x);
+  }
+  return x;
+}

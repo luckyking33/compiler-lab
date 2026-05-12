@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Frontend build output
+dist/
+frontend/dist/
+.vite/
+frontend/.vite/
+*.tsbuildinfo
+
+# C++ build output
+build/
+backend/core/build/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+compiler_core
+compiler_core.exe
+backend/core/compiler_core
+backend/core/compiler_core.exe
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Lab-generated outputs
+tokens_out.txt
+lr0_automaton.json
+dfa_presets.json
+
+# Local-only artifacts and large course materials
+_local_artifacts/
+*.pdf
+*.docx
+*.mp4
