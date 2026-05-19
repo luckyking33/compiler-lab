@@ -14,11 +14,11 @@ A modern compiler principles lab project with a C++ compiler core and a React-ba
 
 ```text
 compiler-lab/
-├─ backend/
-│  ├─ core/      # C++ Scanner, Grammar, LR(0) automaton, and compiler_core CLI
-│  └─ api/       # Python same-origin API server for the web UI
-├─ frontend/     # React + Vite visualization frontend
-└─ docs/         # Grammar rules and source-code samples
+|-- backend/
+|   |-- core/      # C++ Scanner, Grammar, LR(0) automaton, and compiler_core CLI
+|   `-- api/       # Python same-origin API server for the web UI
+|-- frontend/      # React + Vite visualization frontend
+`-- docs/          # Grammar rules and source-code samples
 ```
 
 ## Quick Start
@@ -50,6 +50,36 @@ python backend/api/api_server.py
 
 The API server listens on port `55173` by default. The frontend development server proxies `/api` requests there.
 Set `PORT=5173` if you want the Python server to serve the built `frontend/dist` app directly.
+
+### Frontend Backend Target
+
+By default, the frontend calls `/api`, and Vite proxies that to the local backend at `http://127.0.0.1:55173`.
+
+Create `frontend/.env.local` from `frontend/.env.example` when you need a different backend:
+
+```bash
+cd frontend
+cp .env.example .env.local
+```
+
+Use a remote backend through the Vite proxy:
+
+```env
+VITE_API_BASE_URL=/api
+VITE_PROXY_TARGET=http://10.181.9.70:5173
+```
+
+Or keep the default local proxy and reach the remote backend through SSH:
+
+```bash
+ssh -N -L 55173:127.0.0.1:5173 -p 2123 tfx@10.181.9.70
+```
+
+You can also bypass the Vite proxy and call a remote API directly if the backend is reachable from your browser:
+
+```env
+VITE_API_BASE_URL=http://10.181.9.70:5173/api
+```
 
 ## Notes
 
